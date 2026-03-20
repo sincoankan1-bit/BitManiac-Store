@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="monetag" content="7da4f84d1ef2e1d8cb6f27857f21d8dd">
+    <title>BitManiac Store</title>
+<meta name="description" content="Access a massive library of Premium Games, Professional Software, Linux OS Distros, Educational E-Books, and High-Quality Media. Your all-in-one secure download hub.">
+
+<meta name="keywords" content="BitManiac, Pro Software Download, PC Games 2026, Linux OS Library, Free E-Books PDF, Premium Media Downloads, Professional Tools, Operating Systems, Digital Library, BitManiac Hub Games, Minecraft free download, APK, Photoshop free download free,GTA V, GTA 5 free download mobile, GTA VI, Bitmaniac, Bitmain, Adobe Photoshop, APK vision, Apk Mirror, FreeFire, Windows 10 download, Tiny 10 download, Apk Pure ">
+
+<meta property="og:title" content="BitManiac-Hub | Digital  APK Download Library">
+<meta property="og:description" content="Download Games, Software, OS, E-Books, and Media all in one place.">
+<meta property="og:image" content="images/bitmaniac.jpeg">
+<meta property="og:url" content="https://bitmaniac.netlify.app">
+
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="revisit-after" content="1 days">
+    <style>
+        
+        :root {
+            --primary-blue: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --border: #334155;
+        }
+
+        body.dark-mode {
+            --primary-blue: #2563eb;
+            --bg-color: #24252b;
+            --card-bg: #2a2f42;
+            --text-main: #ffffff;
+            --border: #ff9800;
+        }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            margin: 0; 
+            padding: 0;
+            transition: background 0.3s;
+        }         
+        
+        .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 12px;
+    background: linear-gradient(90deg, #371576, #2560eb, #7cf2de); /* Light grey background to separate it */
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffff;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* This targets your div with id="grid-games" */
+#grid-games {
+    display: grid;
+    /* Default for PC: 4 columns */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; /* Slightly more space for PC screens */
+    padding: 20px;
+}
+
+/* For Mobile: It switches to 2 columns automatically */
+@media (max-width: 700px) {
+    #grid-games {
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+#fill {
+    height: 100%;
+    width: 0%;
+    background: repeating-linear-gradient(45deg, #444, #444 10px, #888 10px, #888 20px);
+    transition: width 0.1s;
+}
+
+#loader-screen {
+    position: fixed;
+    inset: 0;
+    background: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+/* Ad at the top */
+.ad-top {
+    width: 100%;
+    max-width: 400px;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #334155;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ad-content { color: #f8fafc; margin-top: 10px; }
+
+/* The Progress Bar Container */
+.progress-container {
+    width: 370px;
+    height: 20px;
+    background: #334155;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+}
+
+/* The actual moving bar */
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #371576, #2560eb, #138808);
+    transition: width 0.5s ease-in-out;    
+}
+
+.rocket { font-size: 50px; animation: bounce 1s infinite alternate; }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-15px); } }
+box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+
+}
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--bg-color); color: var(--text-main); transition: 0.3s; }
+        
+        header {
+            width: 100%; border-radius: 20px;
+            align-items: center; 
+            padding: 0px 5%; background: linear-gradient( to right, #effafa, #e4fce3); 
+            display: flex; justify-content: space-between;
+            font-size: 2-rem;
+            font-weight: bold; 
+            border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+        }
+   
+        .container { width: 92%; max-width: 1200px; margin: auto; padding-bottom: 50px; padding-top: 50px; border-radius: 20px }
+
+        /* HERO & ADS */
+        .hero-thumbnail {
+            width: 100%; height: 300px; border-radius: 10px; margin: 10px 10px;
+            background: url('https://pin.it/3e8YTW7pg') center/cover no-repeat;
+            border: 2px solid var(--border); background-color: #1e293b;
+        }
+
+        .ad-area { 
+            width: 100%; min-height: 90px; background: fff; 
+            border: 0px dashed var(--border); margin: 0px 0; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+        }
+
+        /* SEGMENTED NAV BAR */
+        .nav-bar {
+            display: flex; border: 0px solid var(--text-main); border-radius: 0px;
+            overflow: hidden; margin-bottom: 10px; background: var(--card-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .floating-nav {
+  position: fixed;
+  top: 120px; /* Change to 'bottom: 20px' if you prefer it at the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  width: auto;
+  max-width: 95%;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 25px;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+  backdrop-filter: blur(10px); /* Blurs cards behind the bar */
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+
+.nav-item:hover {
+  color: #007bff; /* Highlight color on hover */
+}
+
+.nav-divider {
+  width: 1px;
+  height: 25px;
+  background: #ccc;
+  margin: 0 5px;
+}
+
+/* Search Bar Styles within Nav */
+.nav-search {
+  display: flex;
+  background: #f1f3f4;
+  border-radius: 40px;
+  padding: 5px 15px;
+}
+
+.nav-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 120px; /* Compact size */
+  font-size: 14px;
+}
+
+.nav-search button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-4px); /* Slight lift effect */
+}
+        
+        /* SECTION STYLING */
+        .section-box { margin-top: 50px; padding: 20px; background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); }
+        
+        .section-header-flex {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+        }
+
+        .local-search {
+            padding: 8px 15px; border-radius: 20px; border: 1px solid var(--primary-blue);
+            background: transparent; color: var(--text-main); width: 250px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        
+        .card { background: var(--bg-color); border: 1px solid var(--border); border-radius: 25px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .card-img { width: 100%; height: 165px; object-fit: cover; display: block; border-radius: 10px; background-color: #333; }
+        .card-body { padding: 15px; }
+        .card-body h3 { font-size: 1.1rem; color: var(--primary-blue); margin-bottom: 5px; }
+        .card-body p { font-size: 0.8rem; margin-bottom: 15px; height: 35px; overflow: hidden; }
+
+        .dl-btn {
+            display: block; text-align: center; background: linear-gradient(90deg, #138808, #32CD32, #cdff03); color: #fff;
+            text-decoration: none; padding: 10px; border-radius: 25px; font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* The hover effect */
+        .dl-btn:hover {
+        background: linear-gradient(90deg, #2560eb, #138808); /* Darker blue when hovering */
+        cursor: pointer;
+        transform: translateY(-2px); /* Slight lift effect */
+        
+        }
+ 
+        h1 {
+  /* Set the font size and style */
+  font-size: 40px;
+  font-family: sans-serif;
+
+  /* 1. Define the linear gradient */
+  background: linear-gradient(45deg, #371576, #2560eb, #7cf2de);
+
+  /* 2. Clip the background to the text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 3. Make the actual text color transparent so the background shows through */
+  -webkit-text-fill-color: transparent;
+  color: transparent; 
+}
+
+    
+  
+
+​<!-- end list -->
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 style="h1">BitManiac 📂</h1>
+   
+    <button onclick="document.body.classList.toggle('dark-mode')" style="padding: 8px 15px; cursor:pointer; border-radius:40px;">🌗Theme</button>   
+</header> 
+    
+<nav class="floating-nav">
+  <div class="nav-content">
+    <a href="#games" class="nav-item">🎮 Games</a>
+    <a href="#soft" class="nav-item">💻 Software</a>
+    <a href="#os" class="nav-item">💿 OS</a>
+    <a href="#pdf" class="nav-item">📚 E-Books</a>
+    <a href="#media" class="nav-item">🎵 Media</a>
+    
+    <div class="nav-divider"></div>
+    
+    <div class="nav-search">
+      <input type="text" placeholder="📂Search everything..." onkeyup="universalSearch(this,)">
+      <button>🔍</button>
+    </div>
+  </div>
+</nav> 
+   
+
+ <div class="ad-area">
+</div>
+<div class="hero-thumbnail">
+</div>
+ <div class="ad-area">
+</div>
+
+    <section id="games" class="section-box">
+        <div class="section-header-flex">
+            <h2>🎮 Games & 📁APKs:</h2>
+            <input type="text" class="local-search" placeholder="🔍Search in 🎮 Games..." onkeyup="sectionSearch(this, 'grid-games')">
+        </div>
+        <div class="grid" id="grid-games"></div>
+    </section>
+    <div class="ad-area">
+</div>
+    
+    <section id="soft" class="section-box">
+        <div class="section-header-flex">
+            <h2>💻 Pro Software & 📱 Apps:</h2>
+            <input type="text" class="local-search" placeholder="🔍Search in 💻 Software..." onkeyup="sectionSearch(this, 'grid-soft')">
+        </div>
+        <div class="grid" id="grid-soft"></div>
+    </section>
+    <div class="ad-area">0</div>
+    <div class="ad-area">0</div>
+
+    <section id="os" class="section-box">
+        <div class="section-header-flex">
+            <h2>💿 OS & 💾 ISOs:</h2>
+            <input type="text" class="local-search" placeholder="🔍Search in 💿 OS..." onkeyup="sectionSearch(this, 'grid-os')">
+        </div>
+        <div class="grid" id="grid-os"></div>
+    </section>
+    <div class="ad-area"> 🔴BitManiac-hub © 2026. All rights reserved.🔴 </div>
+     
+    <section id="pdf" class="section-box">
+        <div class="section-header-flex">
+            <h2>  📚 PDF & E-books:</h2>
+            <input type="text" class="local-search" placeholder="🔍Search in 📚 E books..." onkeyup="sectionSearch(this, 'grid-os')">
+        </div>
+    </section>
+</div>
+
+<script>
+
+    // SEARCH LOGIC
+    function universalSearch(input) {
+        let val = input.value.toLowerCase();
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(val) ? "block" : "none";
+        });
+    }
+
+    function sectionSearch(input, gridId) {
+        let val = input.value.toLowerCase();
+        let cards = document.getElementById(gridId).querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(val) ? "block" : "none";
+        });
+    }
+
+</script>
+<script src="index.js"></script>
+<footer>
+    <p>&copy; 2026 BitManiac-Hub. All Rights Reserved. 🚀</p>
+</footer>
+<div id="loader-screen" style="display: none;">
+    <!-- 1. Ad on Top -->
+    <div class="ad-top">
+        <small>SPONSORED AD</small>
+        <div class="ad-content">
+            <strong>https://omg10.com/4/10729840</strong><br>
+            Get 10x faster speeds and no waiting time!
+        </div>
+    </div>
+
+    <!-- 2. Rocket and Percentage -->
+    <div class="rocket">🚀</div>
+    <div id="percent">0%</div>
+
+    <!-- 3. Progress Bar -->
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+    
+    <p style="color: #64748b; font-size: 12px; margin-top: 10px;">Redirecting to secure server...</p>
+</div>
+   
+<div id="loadingScreen" style="display: none; text-align: center;">
+    <div class="ad-placeholder">Ads (Propeller)</div>
+    
+    <div class="loader-container">
+        <span class="rocket">🚀</span>
+        <p>Loading...</p>
+        <div class="progress-bar">
+            <div id="fill"></div>
+        </div>
+        <div id="percentage">0%</div>
+    </div>
+</div>
+
+    </body> </html>
